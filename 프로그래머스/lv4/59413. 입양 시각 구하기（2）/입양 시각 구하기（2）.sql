@@ -1,0 +1,9 @@
+-- 코드를 입력하세요
+/* @HOUR변수에 -1을 할당한 후 22까지 +1씩 더해준다는 뜻 */
+SET @HOUR = -1; 
+SELECT (@HOUR := @HOUR +1) AS HOUR,
+    (SELECT COUNT(HOUR(DATETIME)) 
+    FROM ANIMAL_OUTS 
+    WHERE HOUR(DATETIME)=@HOUR) AS COUNT 
+    FROM ANIMAL_OUTS
+WHERE @HOUR < 23;
